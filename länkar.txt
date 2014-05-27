@@ -1,2 +1,4 @@
 Information om IMDB api
+http://www.omdbapi.com/
 http://stackoverflow.com/questions/1966503/does-imdb-provide-an-api
+http://99webtools.com/get-movie-info-imdb.php
