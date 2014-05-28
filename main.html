@@ -33,15 +33,27 @@
 	    var omdbJSON = eval("(" + omdbData + ")");
 	    console.log(omdbJSON);
 
-	    var iDiv = document.createElement("div");
-	    iDiv.id = "movie";
-	    iDiv.className = "col-md-3 panel panel-default";
-	    iDiv.innerHTML = omdbJSON.Title + " (" + omdbJSON.imdbRating + ")";
+	    var comment = document.getElementById("newCommentField").value;
 
-	    document.getElementById("row1").appendChild(iDiv);
+	    var movieDiv = document.createElement("div");
+	    var commentDiv = document.createElement("div");
+	    var titleDiv = document.createElement("div");
+
+		movieDiv.appendChild(titleDiv);
+	    movieDiv.appendChild(commentDiv);
+
+	    movieDiv.id = "movie";
+	    movieDiv.className = "col-md-3 panel panel-default";
+
+	    titleDiv.id = "title";
+	    titleDiv.className = "panel-heading";
+	    titleDiv.innerHTML = omdbJSON.Title + " (" + omdbJSON.imdbRating + ")";
 	    
-	    //document.getElementById("mov1").innerHTML = omdbJSON.Title + " (" + omdbJSON.Released + ")";
-	    //document.getElementById("rating1").innerHTML = omdbJSON.imdbRating;
+	    commentDiv.id = "comment";
+	    commentDiv.className = "panel-body";
+	    commentDiv.innerHTML = comment;
+
+	    document.getElementById("movies").appendChild(movieDiv);
 	}
 
   </script>
@@ -55,81 +67,22 @@
   </div>
       <div class="container">
       	<div class="row">
-	      	<div class="col-md-8">
+	      	<div class="col-xs-8">
 	      		<div class="panel panel-default" position="fixed">
 	      			<div class="panel-heading"><h1>Add a movie</h1></div>
-	      			<div class="panel-body"><input type="text" class="form-control" id="newMovieField" placeholder="Title"></div>
+	      			<div class="panel-body"><input type="text" class="form-control" id="newMovieField" placeholder="Title"> <br>
+	      			<input type="textarea" rows="3" class="form-control" id="newCommentField" placeholder="Comment">
+	      			</div>
 	      			<input id="addMovieBtn" type="button" value="Add Movie" class="btn btn-primary btn-block" onclick="addMovie();" />
 	      		</div>
 	      	</div>
       	</div>
 
-        <div class="row" id="row1">
-
-          <!--<div class="col-md-3">
-            <div class="panel panel-default">
-              <div class="panel-heading"><p id="mov1"></p></div>
-              <div class="panel-body"><p id="rating1"></p></div>
-            </div>
-          </div>
-
-          <div class="col-md-3">
-            <div class="panel panel-default">
-              <div class="panel-heading"><p id="mov2"></p></div>
-              <div class="panel-body"><p id="rating2"></p></div>
-            </div>
-          </div>
-
-          <div class="col-md-3">
-            <div class="panel panel-default">
-              <div class="panel-heading"><p id="mov3"></p></div>
-              <div class="panel-body"><p id="rating3"></p></div>
-            </div>
-          </div>
-
-          <div class="col-md-3">
-            <div class="panel panel-default">
-              <div class="panel-heading"><p id="mov4"></p></div>
-              <div class="panel-body"><p id="rating4"></p></div>
-            </div>
-          </div>-->
+      	<!-- This is where the movies will end up -->
+        <div class="row" id="movies">
 
         </div>
     </div>
-
-    <!--<div class="container">
-        <div class="row">
-
-          <div class="col-md-3">
-            <div class="panel panel-default">
-              <div class="panel-heading"><p id="mov5"></p></div>
-              <div class="panel-body"><p id="rating5"></p></div>
-            </div>
-          </div>
-
-          <div class="col-md-3">
-            <div class="panel panel-default">
-              <div class="panel-heading"><p id="mov6"></p></div>
-              <div class="panel-body"><p id="rating6"></p></div>
-            </div>
-          </div>
-
-          <div class="col-md-3">
-            <div class="panel panel-default">
-              <div class="panel-heading"><p id="mov7"></p></div>
-              <div class="panel-body"><p id="rating7"></p></div>
-            </div>
-          </div>
-
-          <div class="col-md-3">
-            <div class="panel panel-default">
-              <div class="panel-heading"><p id="mov8"></p></div>
-              <div class="panel-body"><p id="rating8"></p></div>
-            </div>
-          </div>
-
-        </div>
-    </div>-->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
