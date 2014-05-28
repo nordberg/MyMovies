@@ -20,12 +20,24 @@
   <body background="res/bg.png">
 
   <script type="text/JavaScript">
+  // Add more bg images
+  var images = [
+  	{src : "res/bg0.png"}
+  ];
+
+  function setBackground (images) {
+  	var n = Math.floor(Math.random() * images.length);
+  	document.body.style.backgroundImage = "url(" + images[n].src + ")";
+  }
+
+  setBackground(images);
+
 	function addMovie() {
 	    var imdbTitle = document.getElementById("newMovieField").value;
 
 	    console.log("User requested:" + imdbTitle);
 
-	    var http = new ActiveXObject("Microsoft.XMLHTTP");
+	    var http = new XMLHttpRequest();
 	    http.open("GET", "http://omdbapi.com/?t=" + imdbTitle, false);
 	    http.send(null);
 
@@ -43,15 +55,15 @@
 	    movieDiv.appendChild(commentDiv);
 
 	    movieDiv.id = "movie";
-	    movieDiv.className = "col-md-3 panel panel-default";
+	    movieDiv.className = "col-xs-3 panel panel-default";
 
 	    titleDiv.id = "title";
 	    titleDiv.className = "panel-heading";
-	    titleDiv.innerHTML = omdbJSON.Title + " (" + omdbJSON.imdbRating + ")";
+	    titleDiv.innerHTML = omdbJSON.Title + " (" + omdbJSON.imdbRating + ")" + " <a class=\"close\">x</a>";
 	    
 	    commentDiv.id = "comment";
 	    commentDiv.className = "panel-body";
-	    commentDiv.innerHTML = comment;
+	    commentDiv.innerHTML = "<img src=\"" + omdbJSON.Poster + "\" class=\"img-rounded\" width=\"40%\" height=\"40%\"/> <br> " + comment;
 
 	    document.getElementById("movies").appendChild(movieDiv);
 	}
